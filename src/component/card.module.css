@@ -1,0 +1,45 @@
+.cardWrapper {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.card {
+    width: 30%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    background-color: antiquewhite;
+}
+
+.card img {
+    border-radius: 8px;
+    width: 400px;
+    height: 300px;
+}
+
+.card h3 {
+    color: chocolate;
+    font-weight: 700;
+}
+
+.card p {
+    color: black;
+    font-weight: 500;
+}
+
+.pagination {
+    position: fixed;
+    top: 700px;
+    border-radius: 10px;
+    background-color: aqua;
+}
