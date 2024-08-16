@@ -6,16 +6,21 @@ import data from "../assets/data/data.json";
 function Card() {
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
-  const limit = 20;
+  const [limit, setLimit] = useState(20);
 
   useEffect(() => {
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
-    setCars(data.slice(startIndex, endIndex)); 
-  }, [page]);
+    setCars(data.slice(startIndex, endIndex));
+  }, [page, limit]);
 
   const handlePageChange = (event, value) => {
     setPage(value);
+  };
+
+  const handleLimitChange = (event) => {
+    setLimit(parseInt(event.target.value));
+    setPage(1); // Reset to the first page when limit changes
   };
 
   return (
@@ -31,13 +36,22 @@ function Card() {
         </div>
       ))}
 
-      <Pagination
-        count={Math.ceil(data.length / limit)}
-        color="primary"
-        className={styles.pagination}
-        page={page}
-        onChange={handlePageChange}
-      />
+      <div className={styles.fixed}>
+        <Pagination
+          count={Math.ceil(data.length / limit)}
+          color="primary"
+          className={styles.pagination}
+          page={page}
+          onChange={handlePageChange}
+        />
+
+        <select value={limit} onChange={handleLimitChange}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
     </div>
   );
 }
